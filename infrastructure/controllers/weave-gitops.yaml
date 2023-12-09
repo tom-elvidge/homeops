@@ -24,6 +24,9 @@ spec:
         kind: HelmRepository
         name: weave-gitops
       interval: 12h
+  install:
+    remediation:
+      retries: 3
   # https://github.com/weaveworks/weave-gitops/blob/main/charts/gitops-server/values.yaml
   values:
     resources:
