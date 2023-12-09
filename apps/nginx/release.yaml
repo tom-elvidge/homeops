@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: tom-elvidge
-      version: 0.3.1
+      version: 0.3.2
   values:
     replicaCount: 3
     containers:
@@ -39,6 +39,8 @@ spec:
       port: 80
     ingress:
       tls:
+        hosts:
+          - "nginx.kevin.tomalias.com"
         secretName: tomalias-com-tls
       ingressClassName: "traefik"
       hosts:
