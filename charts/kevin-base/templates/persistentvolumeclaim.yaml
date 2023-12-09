@@ -1,4 +1,3 @@
-{{- define "kevin-base.persistentvolumeclaim" -}}
 {{- range .Values.persistentVolumeClaims }}
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -20,4 +19,3 @@ spec:
       storage: {{ .storage }}
 ---
 {{- end }}
-{{- end -}}
