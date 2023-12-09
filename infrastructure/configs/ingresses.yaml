@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    - websecure
+    - traefik
   routes:
     - match: Host(`traefik.kevin.tomalias.com`)
       kind: Rule
@@ -27,7 +27,7 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    - websecure
+    - weave-gitops
   routes:
     - match: Host(`weave-gitops.kevin.tomalias.com`)
       kind: Rule
