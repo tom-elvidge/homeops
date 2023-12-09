@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "kevin-common.name" -}}
+{{- define "kevin-base.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "kevin-common.fullname" -}}
+{{- define "kevin-base.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "kevin-common.chart" -}}
+{{- define "kevin-base.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "kevin-common.labels" -}}
-helm.sh/chart: {{ include "kevin-common.chart" . }}
-{{ include "kevin-common.selectorLabels" . }}
+{{- define "kevin-base.labels" -}}
+helm.sh/chart: {{ include "kevin-base.chart" . }}
+{{ include "kevin-base.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "kevin-common.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "kevin-common.name" . }}
+{{- define "kevin-base.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "kevin-base.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "kevin-common.serviceAccountName" -}}
+{{- define "kevin-base.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "kevin-common.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "kevin-base.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
