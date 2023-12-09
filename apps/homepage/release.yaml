@@ -32,7 +32,23 @@ spec:
         maxUnavailable: 25%
     ingress:
       main:
-        enabled: false
+        enabled: true
+        labels:
+          gethomepage.dev/enabled: "true"
+        annotations:
+          gethomepage.dev/name: "Home"
+          gethomepage.dev/description: "A modern, secure, highly customizable application dashboard."
+          gethomepage.dev/group: "A New Group"
+          gethomepage.dev/icon: "homepage.png"
+          traefik.ingress.kubernetes.io/router.entrypoints: web
+        ingressClassName: "traefik"
+        hosts:
+          - host: &host "home.kevin.tomalias.com"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          secretName: tomalias-com-tls
     config:
       bookmarks:
         - Bookmarks:
