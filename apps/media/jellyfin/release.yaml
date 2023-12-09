@@ -43,7 +43,6 @@ spec:
     service:
       type: ClusterIP
       port: 8096
-
     ingress:
       annotations:
         gethomepage.dev/href: https://jellyfin.kevin.tomalias.com
