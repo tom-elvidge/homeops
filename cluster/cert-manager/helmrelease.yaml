@@ -4,11 +4,9 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
-  chart: cert-manager
-  sourceRef:
-    kind: HelmRepository
-    name: jetstack
-  version: v1.13.2
+  chart:
+    spec:
+      chart: cert-manager
   values:
     installCRDs: false
     replicaCount: 3
