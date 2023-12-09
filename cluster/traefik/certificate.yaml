@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tomalias-com
+  namespace: traefik
+spec:
+  secretName: tomalias-com-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.tomalias.com"
+  dnsNames:
+  - "tomalias.com"
+  - "*.tomalias.com"
