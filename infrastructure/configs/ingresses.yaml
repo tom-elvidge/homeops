@@ -33,5 +33,6 @@ spec:
       kind: Rule
       services:
         - name: weave-gitops
+          port: 9091
   tls:
    secretName: tomalias-com-tls
