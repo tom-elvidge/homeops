@@ -4,5 +4,6 @@ resources:
   - clusterissuers.yaml
   - certificates.yaml
   - ingresses.yaml
+  - networkpolicies.yaml
   # todo: sops
   # - secrets.yaml
