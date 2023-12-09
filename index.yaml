@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   kevin-base:
   - apiVersion: v2
+    created: "2023-12-09T15:48:03.529534523Z"
+    dependencies:
+    - name: kevin-common
+      repository: https://tom-elvidge.github.io/homeops
+      version: 0.2.1
+    description: A Helm chart for Kubernetes
+    digest: 33ab50210af77c51df616a61e40866405f1f8be357b3368c05307d897768e0fa
+    name: kevin-base
+    type: application
+    urls:
+    - https://github.com/tom-elvidge/homeops/releases/download/kevin-base-0.2.0/kevin-base-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     created: "2023-12-09T14:59:16.907676642Z"
     dependencies:
     - name: kevin-common
@@ -24,4 +37,4 @@ entries:
     urls:
     - https://github.com/tom-elvidge/kevin-gitops/releases/download/kevin-common-0.2.1/kevin-common-0.2.1.tgz
     version: 0.2.1
-generated: "2023-12-09T14:59:17.131376133Z"
+generated: "2023-12-09T15:48:03.529547537Z"
