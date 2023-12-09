@@ -4,22 +4,20 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
-  chart:
-    spec:
-      chart: cert-manager
-      sourceRef:
-        kind: HelmRepository
-        name: jetstack
-      version: v1.13.2
-      values:
-        installCRDs: false
-        replicaCount: 3
-        extraArgs:
-          - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
-          - --dns01-recursive-nameservers-only
-        podDnsPolicy: None
-        podDnsConfig:
-          nameservers:
-            - 1.1.1.1
-            - 9.9.9.9
+  chart: cert-manager
+  sourceRef:
+    kind: HelmRepository
+    name: jetstack
+  version: v1.13.2
+  values:
+    installCRDs: false
+    replicaCount: 3
+    extraArgs:
+      - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
+      - --dns01-recursive-nameservers-only
+    podDnsPolicy: None
+    podDnsConfig:
+      nameservers:
+        - 1.1.1.1
+        - 9.9.9.9
   interval: 1m0s
