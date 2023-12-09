@@ -1,0 +1,29 @@
+{{- define "kevin-common.ingress" -}}
+{{- $fullName := include "kevin-common.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "kevin-common.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+    - websecure
+  {{- if .Values.ingress.tls }}
+  tls:
+    secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
+  routes:
+    {{- range .Values.ingress.routes }}
+    - match: {{ .match }}
+      kind: {{ .kind }}
+      services:
+        - name: {{ $fullName }}
+          port: {{ $svcPort }}
+    {{- end }}
+{{- end -}}
