@@ -1,0 +1,108 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: homepage
+  namespace: default
+spec:
+  interval: 1m0s
+  chart:
+    spec:
+      chart: jameswynn/homepage
+      sourceRef:
+        kind: HelmRepository
+        name: jameswynn
+      version: 1.2.3
+  values:
+    image:
+      repository: ghcr.io/benphelps/homepage
+      tag: v0.6.0
+    enableRbac: true
+    serviceAccount:
+      name: homepage
+      create: true
+    service:
+      main:
+        ports:
+          http:
+            port: 3000
+    controller:
+      strategy: RollingUpdate
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+    ingress:
+      main:
+        enabled: false
+    config:
+      bookmarks:
+        - Bookmarks:
+          - GitHub:
+            - abbr: GH
+              href: https://github.com/tom-elvidge
+          - Proton:
+            - abbr: PM
+              href: https://mail.proton.me/u/0/inbox
+          - YouTube:
+            - abbr: YT
+              href: https://www.youtube.com
+      services:
+        - Infrastructure:
+          - TrueNAS:
+              href: http://192.168.4.2
+              description: TrueNAS
+              icon: truenas.png
+          - Proxmox:
+              href: http://192.168.4.4:8006
+              description: Proxmox
+              icon: proxmox.png
+          - Unifi:
+              href: http://192.168.1.6:8443
+              description: Unifi Controller 
+              icon: unifi-controller.png
+          - Gateway:
+              href: http://192.168.1.1
+              description: Unifi Gateway
+              icon: unifi.png
+        - Other:
+          - Pi-hole:
+              href: https://pihole.telv.uk/admin/
+              description: Network ad blocking
+              icon: pi-hole.png
+          - NGINX Proxy Manager:
+              href: https://proxy.telv.uk/
+              description: A reverse proxy
+              icon: nginx-proxy-manager.png
+          - iDRAC:
+              href: https://192.168.4.120
+              description: iDRAC for Edith
+              icon: idrac.png
+      widgets:
+        - resources:
+            backend: 'kubernetes'
+            expanded: true
+            cpu: true
+            memory: true
+        - search:
+            provider: duckduckgo
+            target: _blank
+        - kubernetes:
+            cluster:
+              show: true
+              cpu: true
+              memory: true
+              showLabel: true
+              label: 'cluster'
+            nodes:
+              show: false
+              cpu: true
+              memory: true
+              showLabel: true
+      kubernetes:
+        mode: 'cluster'
+      docker:
+      settings:
+    persistence:
+      logs:
+        enabled: true
+        type: emptyDir
+        mountPath: /app/config/logs

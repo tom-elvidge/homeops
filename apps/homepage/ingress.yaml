@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homepage
+  namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`home.kevin.tomalias.com`)
+      kind: Rule
+      services:
+        - name: homepage
+          port: 80
+  tls:
+   secretName: tomalias-com-tls
