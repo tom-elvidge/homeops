@@ -1,0 +1,56 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  chart:
+    spec:
+      chart: kevin-base
+      sourceRef:
+        kind: HelmRepository
+        name: tom-elvidge
+      version: 0.1.0
+  values:
+    replicaCount: 3
+    containers:
+      - name: main
+        image:
+          repository: nginx
+          pullPolicy: IfNotPresent
+          tag: "1.16.0"
+        securityContext: {}
+        resources: {}
+        volumeMounts: []
+    imagePullSecrets: []
+    nameOverride: "nginx"
+    fullnameOverride: "nginx"
+    serviceAccount:
+      create: true
+      automount: true
+      annotations: {}
+      name: ""
+    podAnnotations: {}
+    podLabels: {}
+    podSecurityContext: {}
+    service:
+      type: ClusterIP
+      port: 80
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: traefik-external
+      routes:
+        - match: Host(`nginx.kevin.tomalias.com`)
+          kind: Rule
+      tls:
+        secretName: tomalias-com-tls
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 100
+      targetCPUUtilizationPercentage: 80
+    volumes: []
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+  interval: 1m0s
