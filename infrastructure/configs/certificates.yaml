@@ -13,3 +13,18 @@ spec:
   dnsNames:
   - "kevin.tomalias.com"
   - "*.kevin.tomalias.com"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tomalias-com
+  namespace: media
+spec:
+  secretName: tomalias-com-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "*.kevin.tomalias.com"
+  dnsNames:
+  - "kevin.tomalias.com"
+  - "*.kevin.tomalias.com"
