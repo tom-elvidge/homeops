@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: tom-elvidge
-  namespace: nginx
+  namespace: default
 spec:
   interval: 5m0s
   url: https://tom-elvidge.github.io/charts
