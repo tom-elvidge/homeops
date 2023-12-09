@@ -9,4 +9,4 @@ version: 0.1.0
 dependencies:
   - name: kevin-common
     version: "0.2.0"
-    repository: https://tom-elvidge.github.io/charts
+    repository: https://tom-elvidge.github.io/homeops

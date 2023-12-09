@@ -5,4 +5,4 @@ metadata:
   namespace: default
 spec:
   interval: 5m0s
-  url: https://tom-elvidge.github.io/charts
+  url: https://tom-elvidge.github.io/homeops
