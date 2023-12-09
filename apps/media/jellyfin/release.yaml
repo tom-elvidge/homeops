@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: tom-elvidge
-      version: 0.2.0
+      version: 0.3.4
   values:
     replicaCount: 1
     containers:
@@ -43,6 +43,7 @@ spec:
     service:
       type: ClusterIP
       port: 8096
+
     ingress:
       annotations:
         gethomepage.dev/href: https://jellyfin.kevin.tomalias.com
@@ -54,12 +55,11 @@ spec:
         gethomepage.dev/widget.type: jellyfin
         gethomepage.dev/widget.url: https://jellyfin.kevin.tomalias.com
         gethomepage.dev/widget.key: 66a042fd8bc044afbeb20258d6d4e897
-        kubernetes.io/ingress.class: traefik-external
-      routes:
-        - match: Host(`jellyfin.kevin.tomalias.com`)
-          kind: Rule
-      tls:
-        secretName: tomalias-com-tls
+      ingressClassName: "traefik"
+      host: "jellyfin.kevin.tomalias.com"
+      path: /
+      pathType: Prefix
+      tlsSecretName: tomalias-com-tls
     autoscaling:
       enabled: false
       minReplicas: 1
