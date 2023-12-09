@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: tomalias-com
-  namespace: traefik
+  namespace: default
 spec:
   secretName: tomalias-com-tls
   issuerRef:
