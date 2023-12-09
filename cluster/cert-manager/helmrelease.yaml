@@ -7,6 +7,10 @@ spec:
   chart:
     spec:
       chart: cert-manager
+      sourceRef:
+        kind: HelmRepository
+        name: jetstack
+      version: v1.13.2
   values:
     installCRDs: false
     replicaCount: 3
