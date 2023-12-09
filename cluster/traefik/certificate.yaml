@@ -9,7 +9,7 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "*.tomalias.com"
+  commonName: "*.kevin.tomalias.com"
   dnsNames:
-  - "tomalias.com"
-  - "*.tomalias.com"
+  - "kevin.tomalias.com"
+  - "*.kevin.tomalias.com"
