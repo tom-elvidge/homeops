@@ -8,5 +8,5 @@ version: 0.2.0
 
 dependencies:
   - name: kevin-common
-    version: "0.2.0"
+    version: "0.2.1"
     repository: https://tom-elvidge.github.io/homeops
