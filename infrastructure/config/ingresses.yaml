@@ -17,3 +17,21 @@ spec:
           kind: TraefikService
   tls:
    secretName: tomalias-com-tls
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik
+  namespace: traefik
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`weave-gitops.kevin.tomalias.com`)
+      kind: Rule
+      services:
+        - name: weave-gitops
+  tls:
+   secretName: tomalias-com-tls
