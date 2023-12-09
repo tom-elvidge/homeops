@@ -1,3 +1,4 @@
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -6,7 +7,7 @@ metadata:
 spec:
   secretName: tomalias-com-tls
   issuerRef:
-    name: letsencrypt-production
+    name: letsencrypt
     kind: ClusterIssuer
   commonName: "*.kevin.tomalias.com"
   dnsNames:

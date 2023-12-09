@@ -1,13 +1,16 @@
+---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-production
+  name: letsencrypt
+  namespace: cert-manager
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: letsencrypt@tomalias.com
+    # The server is replaced in /clusters/production/infrastructure.yaml
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: me@tomalias.com
     privateKeySecretRef:
-      name: letsencrypt-production
+      name: letsencrypt
     solvers:
       - dns01:
           route53:
