@@ -1,4 +1,4 @@
-# homeops
+# HomeOps
 
 A repository for managing my home lab cluster Kevin (shorthand k3n) declaratively.
 
