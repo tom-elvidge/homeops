@@ -4,9 +4,9 @@ description: A Helm chart for Kubernetes
 
 type: application
 
-version: 0.2.0
+version: 0.2.2
 
 dependencies:
   - name: kevin-common
-    version: "0.2.1"
+    version: "0.2.2"
     repository: https://tom-elvidge.github.io/homeops

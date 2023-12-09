@@ -4,13 +4,14 @@ metadata:
   name: nginx
   namespace: default
 spec:
+  interval: 1m0s
   chart:
     spec:
       chart: kevin-base
       sourceRef:
         kind: HelmRepository
         name: tom-elvidge
-      version: 0.2.0
+      version: 0.2.2
   values:
     replicaCount: 3
     containers:
@@ -37,13 +38,14 @@ spec:
       type: ClusterIP
       port: 80
     ingress:
-      annotations:
-        kubernetes.io/ingress.class: traefik-external
-      routes:
-        - match: Host(`nginx.kevin.tomalias.com`)
-          kind: Rule
       tls:
         secretName: tomalias-com-tls
+      ingressClassName: "traefik"
+      hosts:
+        - host: &host "nginx.kevin.tomalias.com"
+          paths:
+            - path: /
+              pathType: Prefix
     autoscaling:
       enabled: false
       minReplicas: 1
@@ -53,4 +55,3 @@ spec:
     nodeSelector: {}
     tolerations: []
     affinity: {}
-  interval: 1m0s
