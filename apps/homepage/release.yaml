@@ -7,7 +7,7 @@ spec:
   interval: 1m0s
   chart:
     spec:
-      chart: jameswynn/homepage
+      chart: homepage
       sourceRef:
         kind: HelmRepository
         name: jameswynn
