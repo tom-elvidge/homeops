@@ -54,7 +54,7 @@ spec:
               service:
                 name: weave-gitops
                 port:
-                  number: 9091
+                  number: 9001
   tls:
     - hosts:
         - weave-gitops.kevin.tomalias.com
