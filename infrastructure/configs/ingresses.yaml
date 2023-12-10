@@ -36,3 +36,26 @@ spec:
           port: 80
   tls:
    secretName: tomalias-com-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: weave-gitops
+  namespace: longhorn-system
+spec:
+  ingressClassName: "traefik"
+  rules:
+    - host: weave-gitops.kevin.tomalias.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: weave-gitops
+                port:
+                  number: 9091
+  tls:
+    - hosts:
+        - weave-gitops.kevin.tomalias.com
+      secretName: tomalias-com-tls
