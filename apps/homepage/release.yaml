@@ -68,14 +68,18 @@ spec:
               href: http://192.168.4.4:8006
               description: Proxmox
               icon: proxmox.png
-          - Unifi:
-              href: http://192.168.1.6:8443
-              description: Unifi Controller 
+          - Unifi Controller:
+              href: https://unifi.kevin.tomalias.com
+              description: Unifi Controller
               icon: unifi-controller.png
-          - Gateway:
+          - Unifi Gateway:
               href: http://192.168.1.1
               description: Unifi Gateway
               icon: unifi.png
+          - Traefik:
+              href: https://traefik.kevin.tomalias.com
+              description: "Kubernetes ingress controller"
+              icon: traefik.png
         - Other:
           - Pi-hole:
               href: https://pihole.telv.uk/admin/

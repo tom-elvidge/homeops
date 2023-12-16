@@ -18,30 +18,48 @@ spec:
   tls:
    secretName: tomalias-com-tls
 ---
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: longhorn-dashboard
   namespace: longhorn-system
-  annotations: 
-    kubernetes.io/ingress.class: traefik-external
+  annotations:
+    gethomepage.dev/href: https://longhorn.kevin.tomalias.com
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: Longhorn
+    gethomepage.dev/description: "Distributed storage for Kubernetes"
+    gethomepage.dev/group: Infrastructure
+    gethomepage.dev/icon: longhorn.png
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`longhorn.kevin.tomalias.com`)
-      kind: Rule
-      services:
-        - name: longhorn-frontend
-          port: 80
+  ingressClassName: "traefik"
+  rules:
+    - host: longhorn.kevin.tomalias.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: longhorn-frontend
+                port:
+                  number: 80
   tls:
-   secretName: tomalias-com-tls
+    - hosts:
+        - longhorn.kevin.tomalias.com
+      secretName: tomalias-com-tls
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: weave-gitops
   namespace: flux-system
+  annotations:
+    gethomepage.dev/href: https://weave-gitops.kevin.tomalias.com
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: Flux
+    gethomepage.dev/description: "Weave GitOps UI"
+    gethomepage.dev/group: Infrastructure
+    gethomepage.dev/icon: flux-cd.png
 spec:
   ingressClassName: "traefik"
   rules:
