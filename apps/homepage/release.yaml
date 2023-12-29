@@ -78,13 +78,9 @@ spec:
               icon: traefik.png
         - Other:
           - Pi-hole:
-              href: https://pihole.telv.uk/admin/
+              href: http://10.1.5.2:8088/admin
               description: Network ad blocking
               icon: pi-hole.png
-          - NGINX Proxy Manager:
-              href: https://proxy.telv.uk/
-              description: A reverse proxy
-              icon: nginx-proxy-manager.png
           - iDRAC:
               href: https://10.1.5.80
               description: iDRAC for Edith
