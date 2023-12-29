@@ -15,11 +15,9 @@ spec:
   values:
     global:
       storageClass: longhorn
-
     auth:
       username: user
       password: ""
-
     containerPorts:
       amqp: 5672
       amqpTls: 5671
@@ -27,18 +25,14 @@ spec:
       manager: 15672
       epmd: 4369
       metrics: 9419
-
     replicaCount: 3
-
     persistence:
       enabled: true
       storageClass: "longhorn"
       size: 4Gi
-
     service:
       type: LoadBalancer
       loadBalancerIP: 10.1.5.42
-
     metrics:
       enabled: true
       plugins: "rabbitmq_prometheus"
