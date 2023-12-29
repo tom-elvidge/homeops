@@ -61,20 +61,16 @@ spec:
       services:
         - Infrastructure:
           - TrueNAS:
-              href: http://192.168.4.2
+              href: http://10.1.5.10
               description: TrueNAS
               icon: truenas.png
           - Proxmox:
-              href: http://192.168.4.4:8006
+              href: http://10.1.5.3:8006
               description: Proxmox
               icon: proxmox.png
-          - Unifi Controller:
-              href: https://unifi.kevin.tomalias.com
-              description: Unifi Controller
-              icon: unifi-controller.png
-          - Unifi Gateway:
+          - Unifi:
               href: http://192.168.1.1
-              description: Unifi Gateway
+              description: Unifi
               icon: unifi.png
           - Traefik:
               href: https://traefik.kevin.tomalias.com
@@ -90,7 +86,7 @@ spec:
               description: A reverse proxy
               icon: nginx-proxy-manager.png
           - iDRAC:
-              href: https://192.168.4.120
+              href: https://10.1.5.80
               description: iDRAC for Edith
               icon: idrac.png
       widgets:

@@ -67,7 +67,7 @@ spec:
     volumes:
       - name: media
         nfs:
-          server: 192.168.4.2
+          server: 10.1.5.10
           path: /mnt/wdred/media
       - name: config
         persistentVolumeClaim:
