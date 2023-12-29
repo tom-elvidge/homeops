@@ -31,4 +31,4 @@ spec:
       interval: 12h
   install:
     remediation:
-      retries: 3
+      retries: 0
