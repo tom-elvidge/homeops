@@ -27,7 +27,6 @@ metadata:
     gethomepage.dev/href: https://longhorn.kevin.tomalias.com
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: Longhorn
-    gethomepage.dev/description: "Distributed storage for Kubernetes"
     gethomepage.dev/group: Infrastructure
     gethomepage.dev/icon: longhorn.png
 spec:
@@ -57,7 +56,6 @@ metadata:
     gethomepage.dev/href: https://weave-gitops.kevin.tomalias.com
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: Flux
-    gethomepage.dev/description: "Weave GitOps UI"
     gethomepage.dev/group: Infrastructure
     gethomepage.dev/icon: flux-cd.png
 spec:

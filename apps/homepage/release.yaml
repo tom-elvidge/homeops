@@ -37,8 +37,7 @@ spec:
           gethomepage.dev/enabled: "true"
         annotations:
           gethomepage.dev/name: "Home"
-          gethomepage.dev/description: "A modern, secure, highly customizable application dashboard."
-          gethomepage.dev/group: "A New Group"
+          gethomepage.dev/group: "Applications"
           gethomepage.dev/icon: "homepage.png"
         ingressClassName: "traefik"
         hosts:
@@ -60,31 +59,25 @@ spec:
               href: https://www.youtube.com
       services:
         - Infrastructure:
+          - Unifi:
+              href: http://192.168.1.1
+              icon: unifi.png
           - TrueNAS:
               href: http://10.1.5.10
-              description: TrueNAS
               icon: truenas.png
           - Proxmox:
               href: http://10.1.5.3:8006
-              description: Proxmox
               icon: proxmox.png
-          - Unifi:
-              href: http://192.168.1.1
-              description: Unifi
-              icon: unifi.png
-          - Traefik:
-              href: https://traefik.kevin.tomalias.com
-              description: "Kubernetes ingress controller"
-              icon: traefik.png
-        - Other:
-          - Pi-hole:
-              href: http://10.1.5.2:8088/admin
-              description: Network ad blocking
-              icon: pi-hole.png
           - iDRAC:
               href: https://10.1.5.80
-              description: iDRAC for Edith
               icon: idrac.png
+          - Pi-Hole:
+              href: http://10.1.5.2:8088/admin
+              icon: pi-hole.png
+        - Kubernetes:
+          - Traefik:
+              href: https://traefik.kevin.tomalias.com
+              icon: traefik.png
       widgets:
         - resources:
             backend: 'kubernetes'
