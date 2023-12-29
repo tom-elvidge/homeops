@@ -8,7 +8,7 @@ system_timezone: "Etc/UTC"
 
 flannel_iface: "eth0"
 
-apiserver_endpoint: "192.168.4.39"
+apiserver_endpoint: "10.1.5.39"
 
 k3s_token: "secret"
 k3s_node_ip: '{{ ansible_facts[flannel_iface]["ipv4"]["address"] }}'
@@ -35,7 +35,7 @@ metal_lb_type: "native"
 metal_lb_mode: "layer2"
 metal_lb_speaker_tag_version: "v0.13.9"
 metal_lb_controller_tag_version: "v0.13.9"
-metal_lb_ip_range: "192.168.4.40-192.168.4.49"
+metal_lb_ip_range: "10.1.5.40-10.1.5.49"
 
 proxmox_lxc_configure: false
 
