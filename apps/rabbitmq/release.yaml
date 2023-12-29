@@ -10,7 +10,7 @@ spec:
       chart: rabbitmq
       sourceRef:
         kind: HelmRepository
-        name: rabbitmq
+        name: bitnamicharts
       version: 12.6.1
   values:
     global:
