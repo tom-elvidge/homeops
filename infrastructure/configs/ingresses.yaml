@@ -27,7 +27,7 @@ metadata:
     gethomepage.dev/href: https://longhorn.kevin.tomalias.com
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: Longhorn
-    gethomepage.dev/group: Infrastructure
+    gethomepage.dev/group: Kubernetes
     gethomepage.dev/icon: longhorn.png
 spec:
   ingressClassName: "traefik"
@@ -56,7 +56,7 @@ metadata:
     gethomepage.dev/href: https://weave-gitops.kevin.tomalias.com
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: Flux
-    gethomepage.dev/group: Infrastructure
+    gethomepage.dev/group: Kubernetes
     gethomepage.dev/icon: flux-cd.png
 spec:
   ingressClassName: "traefik"
