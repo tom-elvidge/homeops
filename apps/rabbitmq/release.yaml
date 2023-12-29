@@ -1,0 +1,49 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rabbitmq
+  namespace: rabbitmq
+spec:
+  interval: 1m0s
+  chart:
+    spec:
+      chart: rabbitmq
+      sourceRef:
+        kind: HelmRepository
+        name: rabbitmq
+      version: 12.6.1
+  values:
+    global:
+      storageClass: longhorn
+
+    auth:
+      username: user
+      password: ""
+
+    containerPorts:
+      amqp: 5672
+      amqpTls: 5671
+      dist: 25672
+      manager: 15672
+      epmd: 4369
+      metrics: 9419
+
+    replicaCount: 3
+
+    persistence:
+      enabled: true
+      storageClass: "longhorn"
+      size: 4Gi
+
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 10.1.5.42
+
+    metrics:
+      enabled: true
+      plugins: "rabbitmq_prometheus"
+      podAnnotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "{{ .Values.service.ports.metrics }}"
+      serviceMonitor:
+        enabled: false
