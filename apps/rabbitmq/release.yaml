@@ -17,7 +17,7 @@ spec:
       storageClass: longhorn
     auth:
       username: user
-      password: ""
+      password: securepassword
     containerPorts:
       amqp: 5672
       amqpTls: 5671
