@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: tom-elvidge
-      version: 0.3.4
+      version: 0.4.3
   values:
     replicaCount: 1
     containers:
@@ -20,14 +20,28 @@ spec:
           repository: homeassistant/home-assistant
           pullPolicy: IfNotPresent
           tag: "2023.12"
+        securityContext: {}
+        resources: {}
         volumeMounts:
           - name: config
             mountPath: /config
+        ports:
+          - name: http
+            port: 8123
+            protocol: TCP
+    imagePullSecrets: []
     nameOverride: "homeassistant"
     fullnameOverride: "homeassistant"
+    serviceAccount:
+      create: true
+      automount: true
+      annotations: {}
+      name: ""
+    podAnnotations: {}
+    podLabels: {}
+    podSecurityContext: {}
     service:
       type: ClusterIP
-      port: 8123
     ingress:
       annotations:
         gethomepage.dev/href: https://homeassistant.kevin.tomalias.com
@@ -39,13 +53,25 @@ spec:
       host: "homeassistant.kevin.tomalias.com"
       path: /
       pathType: Prefix
+      portName: http
       tlsSecretName: tomalias-com-tls
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 100
+      targetCPUUtilizationPercentage: 80
     volumes:
       - name: config
         persistentVolumeClaim:
           claimName: homeassistant-config-claim
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
     persistentVolumeClaims:
       - name: homeassistant-config-claim
         accessModes:
           - ReadWriteOnce
         storage: 2Gi
+    probes:
+      enabled: true
+      portName: http
