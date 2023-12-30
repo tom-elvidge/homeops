@@ -1,0 +1,51 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: homeassistant
+  namespace: smarthome
+spec:
+  interval: 1m0s
+  chart:
+    spec:
+      chart: kevin-base
+      sourceRef:
+        kind: HelmRepository
+        name: tom-elvidge
+      version: 0.3.4
+  values:
+    replicaCount: 1
+    containers:
+      - name: main
+        image:
+          repository: homeassistant/home-assistant
+          pullPolicy: IfNotPresent
+          tag: "2023.12"
+        volumeMounts:
+          - name: config
+            mountPath: /config
+    nameOverride: "homeassistant"
+    fullnameOverride: "homeassistant"
+    service:
+      type: ClusterIP
+      port: 8123
+    ingress:
+      annotations:
+        gethomepage.dev/href: https://homeassistant.kevin.tomalias.com
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/name: Home Assistant
+        gethomepage.dev/group: Applications
+        gethomepage.dev/icon: homeassistant.png
+      ingressClassName: "traefik"
+      host: "homeassistant.kevin.tomalias.com"
+      path: /
+      pathType: Prefix
+      tlsSecretName: tomalias-com-tls
+    volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: homeassistant-config-claim
+    persistentVolumeClaims:
+      - name: homeassistant-config-claim
+        accessModes:
+          - ReadWriteOnce
+        storage: 2Gi
