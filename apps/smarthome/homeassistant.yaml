@@ -49,7 +49,7 @@ spec:
         gethomepage.dev/enabled: "true"
         gethomepage.dev/name: Home Assistant
         gethomepage.dev/group: Applications
-        gethomepage.dev/icon: homeassistant.png
+        gethomepage.dev/icon: home-assistant.png
       ingressClassName: "traefik"
       host: "homeassistant.kevin.tomalias.com"
       path: /

@@ -78,6 +78,10 @@ spec:
           - Traefik:
               href: https://traefik.kevin.tomalias.com
               icon: traefik.png
+        - Applications:
+          - Zigbee2MQTT:
+              href: http://10.1.5.2:8080
+              icon: zigbee2mqtt.svg
       widgets:
         - resources:
             backend: 'kubernetes'
