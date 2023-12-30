@@ -51,11 +51,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: {{ .Values.probes.portName }}
+              port: {{ $.Values.probes.portName }}
           readinessProbe:
             httpGet:
               path: /
-              port: {{ .Values.probes.portName }}
+              port: {{ $.Values.probes.portName }}
           {{- end }}
           resources:
             {{- toYaml .resources | nindent 12 }}
