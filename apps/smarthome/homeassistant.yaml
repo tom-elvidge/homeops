@@ -43,6 +43,7 @@ spec:
     service:
       type: ClusterIP
     ingress:
+      enabled: true
       annotations:
         gethomepage.dev/href: https://homeassistant.kevin.tomalias.com
         gethomepage.dev/enabled: "true"
