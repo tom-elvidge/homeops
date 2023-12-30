@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   kevin-base:
   - apiVersion: v2
+    created: "2023-12-30T16:41:44.287945214Z"
+    description: A Helm chart for Kubernetes
+    digest: 710ed927ad578093f4571fd119ab4790863240a71eed1a4fc29f845be7eedc9f
+    name: kevin-base
+    type: application
+    urls:
+    - https://github.com/tom-elvidge/homeops/releases/download/kevin-base-0.4.2/kevin-base-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
     created: "2023-12-30T16:22:34.140582916Z"
     description: A Helm chart for Kubernetes
     digest: 90b7c1e2e7953263005f8d0543cc230da08e52361cdd3a6b33db64be72ccf149
@@ -117,4 +126,4 @@ entries:
     urls:
     - https://github.com/tom-elvidge/kevin-gitops/releases/download/kevin-common-0.2.1/kevin-common-0.2.1.tgz
     version: 0.2.1
-generated: "2023-12-30T16:22:34.140624414Z"
+generated: "2023-12-30T16:41:44.287990408Z"
